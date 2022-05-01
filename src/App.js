@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, createContext} from 'react'
+import axios from "axios"
+import Search from "./components/Search"
+import Weather from "./components/Weather";
+import Footer from "./components/Footer"
+
+export const AppContext = createContext();
 
 function App() {
+  const [data, setData] = useState({})
+  const [location, setLocation] = useState("")
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=356e3bde964b8eb6e1412d5c1c144f23&units=metric`;
+
+  const searchLocation = (event) => {
+    if (event.key === "Enter") {
+      axios.get(url).then((response) => {
+        setData(response.data)
+        console.log(response.data)
+      })
+      setLocation("")
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <AppContext.Provider value={{location,setLocation,searchLocation,data}}>
+      <Search />
+      <Weather/>
+    </AppContext.Provider>
+      <Footer />
     </div>
   );
 }
