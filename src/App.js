@@ -12,6 +12,8 @@ function App() {
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=356e3bde964b8eb6e1412d5c1c144f23&units=metric`;
 
+
+  // search for the city weather once the enter button has been pressed
   const searchLocation = (event) => {
     if (event.key === "Enter") {
       axios.get(url).then((response) => {
@@ -21,7 +23,6 @@ function App() {
       setLocation("")
     }
   }
-
   return (
     <div className="App">
     <AppContext.Provider value={{location,setLocation,searchLocation,data}}>
@@ -33,4 +34,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

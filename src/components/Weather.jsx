@@ -3,9 +3,9 @@ import {AppContext} from "../App"
 
 
 function Weather() {
+
     const {data} = useContext(AppContext)
-    
-    
+ 
     return(
     <div className="container">
         <div className="top">
@@ -40,5 +40,4 @@ function Weather() {
     </div>
     )
 }
-
 export default Weather

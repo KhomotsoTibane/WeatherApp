@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly without error 1`] = `
+<footer>
+  <span
+    className="footer"
+  >
+    © khomotso Tibane 
+    2022
+  </span>
+</footer>
+`;
